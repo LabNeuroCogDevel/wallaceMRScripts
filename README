@@ -1,0 +1,53 @@
+SSH TRANSFER HACKS
+
+  NIC          
+    arnold has public facing IP, only one allowed to access NIC
+    connect through arnold using ssh's ProxyCommand and netcat
+     - see .ssh/config entry for NIC
+     - ControlMaster turned off for overseer entry so proxycommand always works as expected 
+  
+  MRRC (meson)   
+    public key authentication broken, use "expect" to enter password
+      and fork keep alive connection
+
+      expect compiled without root, needs LD_LIBRARY_PATH and PATH to be configured
+
+    enable ControlMaster so that this forked connection 
+       provides passwordless entry for other connections
+
+    can then check existance of ControlPath to see if we need to reconnect
+
+     - see .ssh/config entry for *
+
+
+PROJECTS/EXPERMENTS NAMING CONVENTION
+  
+  LOCAL MACHINE      RAW DIR LOC
+
+  gromit             /raid/r3/p2/Luna/Raw/
+  wallace            /data/Luna1/Raw/
+  Schwarzenagger     /Volumes/T800/Raw/        (arnold)
+  Skynet             /Volumes/T800/Raw/
+
+
+
+  REMOTE MACHINE     PROJECT ROOT               IP
+
+  Meson              /disk/mace2/scan_data/       10.48.88.14
+  NIC                /data/data1/studies/       136.142.36.60
+
+
+
+  RAW DIR NAME     REMOTE NAME    SERVER/LOC       REMOTE USER   EXPERMENT
+                                                 
+  WorkingMemory    WPC-5744       Meson (MRRC)     kaihwang
+  MultiModal       WPC-5640       Meson (MRRC)     kaihwang
+  MRCTR            WPC-4951       Meson (MRRC)     kaihwang      (Reward)
+  ConflictPilot    WPC-9433       Meson (MRRC)     kaihwang     
+                                                 
+  NIC              Luna           NIC              luna          (AntiState) 
+  Autism_Faces     O-Hearn        NIC              o-hearn
+                                     
+
+NIC use to be called BIRC 
+PVL and Epilepsy scans are also collected at NIC

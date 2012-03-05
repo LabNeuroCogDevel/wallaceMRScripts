@@ -1,0 +1,6 @@
+#!/usr/bin/env expect
+spawn ssh meson -NMf
+expect "*?assword:*"
+send -- "@lubamoda\r"
+send -- "\r"
+expect eof
