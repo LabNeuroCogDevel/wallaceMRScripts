@@ -28,6 +28,9 @@ case $HOSTNAME in
   ;;
 esac
 
+# use local expect
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/foranw/usr/lib/expect5.45/
+PATH="$PATH:/home/foranw/usr/bin"
 # add meson.expect to path, run if can't find ssh meson already running
 PATH="$PATH:/home/foranw/src/getDataCrons/"
 ls $HOME/.ssh/master/*meson* 2>/dev/null 1>/dev/null || meson.expect
