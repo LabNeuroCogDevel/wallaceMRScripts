@@ -56,7 +56,7 @@ echo -e "\n\n\n$(date)" >> $LogFile
 
 # start master meson session if one doesn't exist
 # use expect to enter password if no master connection to meson
-ls $HOME/.ssh/master/*meson* 2>/dev/null 1>/dev/null || meson.expect
+ls $HOME/.ssh/master/*kaihwang* 2>/dev/null 1>/dev/null || meson.expect
 
 # associative array for project dir names as [arnold]=meson
 declare -A projects
