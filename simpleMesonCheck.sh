@@ -44,6 +44,7 @@ projects=([WorkingMemory]=WPC-5744 [MultiModal]=WPC-5640 [MRCTR]=WPC-4951)
 # clear files log
 echo -n > mesonFiles.txt
 
+[ -r filediffs.txt ] && rm filediffs.txt
 
 #########
 # go through each experiment
@@ -65,9 +66,9 @@ for p in ${!projects[*]}; do
            <(/bin/ls -d /data/Luna1/Raw/$p/*/      | 
                xargs -I{} basename {} "/"          |
                sort)
-done
+done | tee -a filediffs.txt
 
-echo -e "\n\n\n"
+echo -e "\n\n\n" | tee -a filediffs.txt
 
 ######
 # use file list captured from ssh (via tee above) to make a table of counts
@@ -112,4 +113,6 @@ perl -ne '
                    `ls -d $raw/$p{$_}/*|wc -l`
              for keys %c;
 
-          } '  mesonFiles.txt
+          } '  mesonFiles.txt | tee -a filediffs.txt
+
+git add filediffs.txt && git commit -m "meson/local filediff $(date +%F)" && git diff
