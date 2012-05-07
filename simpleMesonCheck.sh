@@ -115,4 +115,4 @@ perl -ne '
 
           } '  mesonFiles.txt | tee -a filediffs.txt
 
-git add filediffs.txt && git commit -m "meson/local filediff $(date +%F)" && git diff
+git add filediffs.txt && git commit -m "meson/local filediff $(date +%F)" && git diff @{1}
