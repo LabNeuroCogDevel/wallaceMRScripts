@@ -74,8 +74,8 @@ for p in ${!projects[*]}; do
    # expect that files are named lunaid_yyyymmdd --> NAMEING PROBLEM if yyyymmdd > current yyyymmdd
    if [ "$lastdate" -gt "$(date +'%Y%m%d')" ];then
       #print error to stdout (which gets logged) and to stderr
-      echo "LOCAL NAME ERROR: $lasdate is greater than the current day, script broken!"| tee >(cat 1>&2)
-      echo -e "${p}: $lastdate" | mail -s '!!Meson Update Script Broke!!' -F "$email"
+      echo "LOCAL NAME ERROR: $lasdate (ls -tc1 $LocalDataDir/$p) is greater than the current day, script broken!"| tee >(cat 1>&2)
+      echo -e "${p}: $lastdate" | mail -s '!!Meson Update Script Broke!!'  "$email"
    fi
 
    echo -e "=== $p (${projects[$p]}) -- $lastdate ==="
@@ -125,7 +125,7 @@ for p in ${!projects[*]}; do
       ssh meson "ls $MesonDataDir/${projects[$p]}/$d/"                  # repeated code :(
       echo "\ndid not run: $cmd";
       echo "rsync subdirectories individually yourself") |
-        mail -s 'Meson Update Incomplete' -F "$email"
+        mail -s 'Meson Update Incomplete' "$email"
     fi
    done
 
