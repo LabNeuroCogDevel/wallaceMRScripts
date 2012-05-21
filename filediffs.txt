@@ -8,6 +8,8 @@ meson:WPC-5744	wallace.wpic.upmc.edu:WorkingMemory
 	10943_20120224
 	10944_20120229
 10977_21020426
+	10984_20120507
+10984-20120507
 3037
 
 
@@ -45,6 +47,3 @@ meson:WPC-5640	wallace.wpic.upmc.edu:MultiModal
 
 
 localname	wpc	remote	mis	bad	local
-   MRCTR	4951	122	3	20	118
-MultiModal	5640	48	1		49
-WorkingMemory	5744	40	1	4	40
