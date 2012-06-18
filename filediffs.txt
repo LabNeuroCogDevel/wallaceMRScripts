@@ -10,6 +10,8 @@ meson:WPC-5744	wallace.wpic.upmc.edu:WorkingMemory
 10977_21020426
 10984-20120507
 	10984_20120507
+11004-20120611
+	11004_20120611
 3037
 
 
@@ -43,7 +45,9 @@ meson:WPC-4951	wallace.wpic.upmc.edu:MRCTR
 meson:WPC-5640	wallace.wpic.upmc.edu:MultiModal
 10592_20100412
 	10902_20111202
+10927_20120417
 	10952_20120412
+	10972_20120417
 
 
 
