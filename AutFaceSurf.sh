@@ -31,8 +31,9 @@ for subpath in /Volumes/TeraByte1/Autism_Faces/[1-9][0-9][0-9]; do
  id=$(basename $subpath); 
  [ -r $subpath/anatomical/mprage.nii.gz ] && continue; 
  cd $subpath/anatomical/; 
- dcm2nii ./; 
+ /usr/local/bin/dcm2nii ./; 
  rage=$(ls -tc 20*.nii.gz |sed 1q); 
+ [ -z "$rage" -o ! -r "$rage" ] && echo "ERROR: $id dcm2nii results not as expected" && exit 1
  ln -s $rage mprage.nii.gz; 
 done
 '
@@ -49,7 +50,7 @@ ssh arnold 'ls /Volumes/Terabyte1/Autism_Faces/[1-9][0-9][0-9]/anatomical/mprage
   scp arnold:$r $wallaceLoc/${s}_mprage.nii.gz
 
   # submit to qsub
-  surfOne.sh -T AF -s $SUBJECTS_DIR -i $s -n $wallaceLoc/${s}_mprage.nii.gz
+  surfOne.sh -t AF -s $SUBJECTS_DIR -i $s -n $wallaceLoc/${s}_mprage.nii.gz
 
   # we should mark that surf now needs to be run
   # new=1
