@@ -11,6 +11,8 @@
 # everything set in bash export, aval. in perl
 set -a
 
+savedir=$(dirname $0)
+
 # where are the experiment directories? (host dependent)
 case $HOSTNAME in
 *gromit*)
@@ -42,9 +44,9 @@ projects=([WorkingMemory]=WPC-5744 [MultiModal]=WPC-5640 [MRCTR]=WPC-4951)
 
 
 # clear files log
-echo -n > mesonFiles.txt
+echo -n > $savedir/mesonFiles.txt
 
-[ -r filediffs.txt ] && rm filediffs.txt
+[ -r $savedir/filediffs.txt ] && rm $savedir/filediffs.txt
 
 #########
 # go through each experiment
@@ -66,9 +68,9 @@ for p in ${!projects[*]}; do
            <(/bin/ls -d /data/Luna1/Raw/$p/*/      | 
                xargs -I{} basename {} "/"          |
                sort)
-done | tee -a filediffs.txt
+done | tee -a $savedir/filediffs.txt
 
-echo -e "\n\n\n" | tee -a filediffs.txt
+echo -e "\n\n\n" | tee -a $savedir/filediffs.txt
 
 ######
 # use file list captured from ssh (via tee above) to make a table of counts
@@ -113,6 +115,9 @@ perl -ne '
                    `ls -d $raw/$p{$_}/*|wc -l`
              for keys %c;
 
-          } '  mesonFiles.txt | tee -a filediffs.txt
+          } '  $savedir/mesonFiles.txt | tee -a $savedir/filediffs.txt
 
-git add filediffs.txt && git commit -m "meson/local filediff $(date +%F)" && git diff @{1}
+pushd $savedir
+# add the file list, commit file, track changes
+git add filediffs.txt mesonFiles.txt && git commit -m "meson/local filediff $(date +%F)" && git --no-pager diff @{1} 
+popd
