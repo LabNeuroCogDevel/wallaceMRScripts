@@ -9,7 +9,7 @@ PATH="$PATH:$HOME/src/freesurfersearcher-general" # add surfOne.sh to path
 #####
 
 ####
-# looks for renamed raw in arnold:Terabyte1
+# looks for renamed raw in arnold:TX
 #   create mprage if needed
 # brings mprage to wallace:Autism_Faces
 # runs FS on new mprages
@@ -27,7 +27,7 @@ SUBJECTS_DIR="/data/Luna1/Autism_Faces/FS_Subjects"
 
 # make anatomical/mprage where missing (remotely)
 ssh arnold '
-for subpath in /Volumes/TeraByte1/Autism_Faces/[1-9][0-9][0-9]; do 
+for subpath in /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]; do 
  id=$(basename $subpath); 
  [ -r $subpath/anatomical/mprage.nii.gz ] && continue; 
  cd $subpath/anatomical/; 
@@ -38,7 +38,7 @@ for subpath in /Volumes/TeraByte1/Autism_Faces/[1-9][0-9][0-9]; do
 done
 '
 # check for new subjects in Aut Faces
-ssh arnold 'ls /Volumes/Terabyte1/Autism_Faces/[1-9][0-9][0-9]/anatomical/mprage.nii.gz' |
+ssh arnold 'ls /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]/anatomical/mprage.nii.gz' |
  while read r; do  # read the "rage" files matching
   s=${r:32:3};     # the subject number is the 3 characters after the 31st in path
 
@@ -63,8 +63,8 @@ done
 # by compairing file count of subject dirs to subj dirs with mprages
 # this should not happen (because we made mprages earlier)
 ssh arnold '
-a=$(ls -1  /Volumes/Terabyte1/Autism_Faces/[1-9][0-9][0-9]/anatomical/mprage.nii.gz|wc -l);
-b=$(ls -d1 /Volumes/Terabyte1/Autism_Faces/[1-9][0-9][0-9]                         |wc -l);
+a=$(ls -1  /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]/anatomical/mprage.nii.gz|wc -l);
+b=$(ls -d1 /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]                         |wc -l);
 [ "$a" -eq "$b" ] || echo "$b subjects but $a mprage.nii.gz"
 '
 
