@@ -40,7 +40,9 @@ done
 # check for new subjects in Aut Faces
 ssh arnold 'ls /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]/anatomical/mprage.nii.gz' |
  while read r; do  # read the "rage" files matching
-  s=${r:32:3};     # the subject number is the 3 characters after the 31st in path
+  s=$(echo $r |cut -d/ -f 5)
+  #s=${r:32:3};     # the subject number is the 3 characters after the 31st in path
+  #                 this changes with drive and path, above is easier
 
   # skip if already exists
   [ -r $wallaceLoc/${s}_mprage.nii.gz ] &&  continue
