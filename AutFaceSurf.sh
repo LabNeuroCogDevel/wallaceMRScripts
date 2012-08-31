@@ -27,7 +27,7 @@ SUBJECTS_DIR="/data/Luna1/Autism_Faces/FS_Subjects"
 
 # make anatomical/mprage where missing (remotely)
 ssh arnold '
-for subpath in /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]; do 
+for subpath in /Volumes/TX/Autism_Faces/subject_data/byID/[1-9][0-9][0-9]; do 
  id=$(basename $subpath); 
  [ -r $subpath/anatomical/mprage.nii.gz ] && continue; 
  cd $subpath/anatomical/; 
@@ -38,9 +38,9 @@ for subpath in /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]; do
 done
 '
 # check for new subjects in Aut Faces
-ssh arnold 'ls /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]/anatomical/mprage.nii.gz' |
+ssh arnold 'ls /Volumes/TX/Autism_Faces/subject_data/byID/[1-9][0-9][0-9]/anatomical/mprage.nii.gz' |
  while read r; do  # read the "rage" files matching
-  s=$(echo $r |cut -d/ -f 5)
+  s=$(echo $r |cut -d/ -f 7)
   #s=${r:32:3};     # the subject number is the 3 characters after the 31st in path
   #                 this changes with drive and path, above is easier
 
@@ -65,8 +65,8 @@ done
 # by compairing file count of subject dirs to subj dirs with mprages
 # this should not happen (because we made mprages earlier)
 ssh arnold '
-a=$(ls -1  /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]/anatomical/mprage.nii.gz|wc -l);
-b=$(ls -d1 /Volumes/TX/Autism_Faces/[1-9][0-9][0-9]                         |wc -l);
+a=$(ls -1  /Volumes/TX/Autism_Faces/subject_data/byID/[1-9][0-9][0-9]/anatomical/mprage.nii.gz|wc -l);
+b=$(ls -d1 /Volumes/TX/Autism_Faces/subject_data/byID/[1-9][0-9][0-9]                         |wc -l);
 [ "$a" -eq "$b" ] || echo "$b subjects but $a mprage.nii.gz"
 '
 
