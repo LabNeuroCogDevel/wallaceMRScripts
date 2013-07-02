@@ -131,3 +131,7 @@ for p in ${!projects[*]}; do
 
 #end loop, put output on stdout as well as to logfile
 done | tee -a $LogFile
+
+
+# with meson still open, try to grab physio for bars
+rsync -azvih meson:/disk/mace2/scan_data/Physio/Trio2/  /data/Luna1/Raw/BarsPhysio/   --include '[Ww][Pp][Cc]*4951*' --exclude '*'

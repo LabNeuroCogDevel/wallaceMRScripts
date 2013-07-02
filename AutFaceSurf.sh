@@ -30,6 +30,7 @@ ssh arnold '
 for subpath in /Volumes/TX/Autism_Faces/subject_data/byID/[1-9][0-9][0-9]; do 
  id=$(basename $subpath); 
  [ -r $subpath/anatomical/mprage.nii.gz ] && continue; 
+ echo "trying to create arnold:$subpath/anatomical/mprage.nii.gz"
  cd $subpath/anatomical/; 
  /usr/local/bin/dcm2nii ./; 
  rage=$(ls -tc 20*.nii.gz |sed 1q); 
