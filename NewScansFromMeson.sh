@@ -60,6 +60,7 @@ ls $HOME/.ssh/master/*kaihwang* 2>/dev/null 1>/dev/null || meson.expect
 
 # associative array for project dir names as [arnold]=meson
 declare -A projects
+# MRCTR is rewards
 projects=([WorkingMemory]=WPC-5744 [MultiModal]=WPC-5640 [MRCTR]=WPC-4951)
  
 # for each key (ie project name) 
@@ -129,9 +130,15 @@ for p in ${!projects[*]}; do
     fi
    done
 
+   # with meson still open, try to grab physio
+   # grab by wpic id -- very unlikely to match a date :)
+   wpicid=${projects[$p]}
+   wpicid=${wpicid##*-}
+   rsync -azvih meson:{/mnt,/disk/mace2/scan_data/Physio}/Trio*/ \
+                /data/Luna1/Raw/Physio/unorganized/$p     \
+         --include "*$wpicid*" --exclude '*'
+
 #end loop, put output on stdout as well as to logfile
 done | tee -a $LogFile
 
 
-# with meson still open, try to grab physio for bars
-rsync -azvih meson:/disk/mace2/scan_data/Physio/Trio2/  /data/Luna1/Raw/BarsPhysio/   --include '[Ww][Pp][Cc]*4951*' --exclude '*'
