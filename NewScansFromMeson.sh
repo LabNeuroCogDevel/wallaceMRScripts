@@ -1,5 +1,4 @@
 #!/home/foranw/bin/bash-42
-
 ####
 #
 # find folders to pull from meson
