@@ -133,9 +133,11 @@ for p in ${!projects[*]}; do
    # grab by wpic id -- very unlikely to match a date :)
    wpicid=${projects[$p]}
    wpicid=${wpicid##*-}
-   rsync -azvih meson:/disk/mace2/scan_data/Physio/Trio*/ \
-                /data/Luna1/Raw/Physio/unorganized/$p     \
-         --include "*$wpicid*" --exclude '*'
+   set -x
+   eval rsync -azvih "meson:/disk/mace2/scan_data/Physio/Trio*/" \
+                "/data/Luna1/Raw/Physio/unorganized/$p"     \
+         --include "\*$wpicid\*" --exclude '\*'
+   set +x
 
 #end loop, put output on stdout as well as to logfile
 done | tee -a $LogFile
