@@ -129,6 +129,7 @@ for p in ${!projects[*]}; do
     fi
    done
 
+   ##### THIS IS ATTEMPTED IN TWO MORE PLACES (see crontab -l)
    # with meson still open, try to grab physio
    # grab by wpic id -- very unlikely to match a date and pull in wrong phsyio :)
    wpicid=${projects[$p]}
@@ -137,7 +138,7 @@ for p in ${!projects[*]}; do
                meson:/disk/mace2/scan_data/Physio/Trio\\*/ 
                /data/Luna1/Raw/Physio/unorganized/$p     
                --include '*$wpicid*' --exclude '*'"
-   eval $cmd
+   #$cmd
 
 #end loop, put output on stdout as well as to logfile
 done | tee -a $LogFile
