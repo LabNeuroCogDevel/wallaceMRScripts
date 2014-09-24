@@ -3,7 +3,7 @@
 /data/Luna1/Raw/Physio/organized/Reward/
 	->
 /data/Luna1/Reward/Physio/
-
+>
 === MultiModal ===
 /data/Luna1/Raw/Physio/organized/MultiModal/
 	->
@@ -18,7 +18,7 @@ ans =
      s10913_2012010: '/data/Luna1/Raw/MultiModal/10913_2012010/ DNE'
     s10952_20120315: '/data/Luna1/Raw/MultiModal/10952_20120315/ DNE'
 
-
+>
 === WorkingMemory ===
 /data/Luna1/Raw/Physio/organized/WorkingMemory/
 	->
@@ -45,3 +45,4 @@ ans =
     s11117_20130124: '/data/Luna1/Raw/WorkingMemory/11117_20130124/ DNE'
     s11200_20130724: '/data/Luna1/Raw/WorkingMemory/11200_20130724/ DNE'
 
+>
