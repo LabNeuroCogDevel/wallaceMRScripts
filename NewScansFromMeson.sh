@@ -36,10 +36,9 @@
 
 # use local expect
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/foranw/usr/lib/expect5.45/
-PATH="$PATH:/home/foranw/usr/bin"
+# add expect and meson.expect to path
+export PATH="$PATH:/home/foranw/usr/bin:/home/foranw/src/getDataCrons/"
 
-# add meson.expect to path
-PATH="$PATH:/home/foranw/src/getDataCrons/"
 
 # data paths (export so perl can see)
 export MesonDataDir="/disk/mace2/scan_data"
@@ -82,9 +81,15 @@ for p in ${!projects[*]}; do
 
 
    # create array of scan date paths
+   # old format
+   #directories=$(ssh meson "setenv lastdate $lastdate; \
+   #           ls -1 $MesonDataDir/${projects[$p]} | \
+   #           perl -slane 'next unless m/^(\d{2})\.(\d{2})\.(\d{4})-/; print if(\"\$3\$1\$2\" > \$ENV{lastdate})'" )
+
+   # new format
    directories=$(ssh meson "setenv lastdate $lastdate; \
               ls -1 $MesonDataDir/${projects[$p]} | \
-              perl -slane 'next unless m/(\d{2})\.(\d{2})\.(\d{4})-/; print if(\"\$3\$1\$2\" > \$ENV{lastdate})'" )
+              perl -slane 'next unless m/^(\d{4})\.(\d{2})\.(\d{2})-/; print if(\"\$1\$2\$3\" > \$ENV{lastdate})'" )
 
    #for each date directory
    # check that scans should be copied
