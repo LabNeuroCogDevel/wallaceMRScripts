@@ -12,7 +12,6 @@ run 10913/2012010
 /data/Luna1/Raw/MultiModal/10913_2012010/ DNE
 run 10952/20120315
 /data/Luna1/Raw/MultiModal/10952_20120315/ DNE
-run 11317/20140829
 run 11321/20140925
 /data/Luna1/Raw/MultiModal/11321_20140925/ DNE
 
@@ -20,7 +19,6 @@ ans =
 
      s10913_2012010: '/data/Luna1/Raw/MultiModal/10913_2012010/ DNE'
     s10952_20120315: '/data/Luna1/Raw/MultiModal/10952_20120315/ DNE'
-    s11317_20140829: 'fail'
     s11321_20140925: '/data/Luna1/Raw/MultiModal/11321_20140925/ DNE'
 
 
