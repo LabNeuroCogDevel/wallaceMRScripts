@@ -12,20 +12,14 @@ run 10913/2012010
 /data/Luna1/Raw/MultiModal/10913_2012010/ DNE
 run 10952/20120315
 /data/Luna1/Raw/MultiModal/10952_20120315/ DNE
-run 11282/20141111
 run 11321/20140925
 /data/Luna1/Raw/MultiModal/11321_20140925/ DNE
-run 11328/20141113
-run 11337/20141117
 
 ans = 
 
      s10913_2012010: '/data/Luna1/Raw/MultiModal/10913_2012010/ DNE'
     s10952_20120315: '/data/Luna1/Raw/MultiModal/10952_20120315/ DNE'
-    s11282_20141111: 'fail'
     s11321_20140925: '/data/Luna1/Raw/MultiModal/11321_20140925/ DNE'
-    s11328_20141113: 'fail'
-    s11337_20141117: 'fail'
 
 
 === WorkingMemory ===
