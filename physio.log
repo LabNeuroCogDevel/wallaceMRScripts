@@ -14,18 +14,25 @@ run 10952/20120315
 /data/Luna1/Raw/MultiModal/10952_20120315/ DNE
 run 11321/20140925
 /data/Luna1/Raw/MultiModal/11321_20140925/ DNE
+run 11323/20141126
+run 11336/20141204
 
 ans = 
 
      s10913_2012010: '/data/Luna1/Raw/MultiModal/10913_2012010/ DNE'
     s10952_20120315: '/data/Luna1/Raw/MultiModal/10952_20120315/ DNE'
     s11321_20140925: '/data/Luna1/Raw/MultiModal/11321_20140925/ DNE'
+    s11323_20141126: 'fail'
+    s11336_20141204: 'fail'
 
 
 === WorkingMemory ===
 /data/Luna1/Raw/Physio/organized/WorkingMemory/
 	->
 /data/Luna1/WorkingMemory/Physio/
+run 10929/20141201
+run 10930/20141121
+/data/Luna1/Raw/WorkingMemory/10930_20141121/ DNE
 run 10994/20120521
 /data/Luna1/Raw/WorkingMemory/10994_20120521/ DNE
 run 11050/20121009
@@ -41,6 +48,8 @@ run 11200/20130724
 
 ans = 
 
+    s10929_20141201: 'fail'
+    s10930_20141121: '/data/Luna1/Raw/WorkingMemory/10930_20141121/ DNE'
     s10994_20120521: '/data/Luna1/Raw/WorkingMemory/10994_20120521/ DNE'
     s11050_20121009: '/data/Luna1/Raw/WorkingMemory/11050_20121009/ DNE'
     s11077_20121109: '/data/Luna1/Raw/WorkingMemory/11077_20121109/ DNE'
